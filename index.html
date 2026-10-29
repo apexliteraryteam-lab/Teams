@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apex Literary Team</title>
+<link rel="icon" href="falvicon.jpg" type="image/jpeg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--n9:#0C1629;--n8:#12203B;--n7:#1B3154;--n6:#22426C;--b6:#2563EB;--b5:#3B82F6;--b4:#60A5FA;--b3:#93BBFD;--c5:#06B6D4;--c4:#22D3EE;--c3:#67E8F9;--em5:#10B981;--em4:#34D399;--am5:#F59E0B;--am4:#FBBF24;--ro5:#F43F5E;--s50:#F8FAFC;--s100:#F1F5F9;--s200:#E2E8F0;--s400:#94A3B8;--s500:#64748B;--s600:#475569;--s800:#1E293B;--s900:#0F172A;--w:#FFF;--ff:'Inter',sans-serif;--fh:'Playfair Display',serif;--fm:'DM Sans',sans-serif;--fc:'Space Grotesk',sans-serif;--rs:8px;--rm:16px;--rl:24px;--sh1:0 4px 24px rgba(0,0,0,.35);--sh2:0 8px 40px rgba(0,0,0,.45);--sh3:0 20px 60px rgba(0,0,0,.5)}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--n9);color:var(--s200);line-height:1.7;overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.section{padding:5rem 0}
+.section-alt{background:var(--n8)}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-tag{display:inline-block;background:rgba(37,99,235,.15);color:var(--b4);padding:.35rem 1rem;border-radius:50px;font-size:.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem}
+.section-title{font-family:var(--fh);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--w);margin-bottom:.75rem}
+.section-sub{color:var(--s400);max-width:600px;margin:0 auto;font-size:1.05rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:var(--rs);font-weight:600;font-size:.95rem;text-decoration:none;transition:all .3s;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--b6),var(--c5));color:var(--w)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,99,235,.4)}
+.btn-outline{background:transparent;border:2px solid var(--b4);color:var(--b4)}
+.btn-outline:hover{background:var(--b6);color:var(--w);border-color:var(--b6)}
+#preloader{position:fixed;inset:0;background:var(--n9);display:flex;align-items:center;justify-content:center;z-index:99999;transition:opacity .6s,visibility .6s}
+#preloader.loaded{opacity:0;visibility:hidden}
+#preloader img{width:120px;height:120px;object-fit:contain;border-radius:50%;animation:preSpin 2s ease-in-out infinite}
+@keyframes preSpin{0%{transform:scale(1) rotate(0)}50%{transform:scale(1.15) rotate(180deg)}100%{transform:scale(1) rotate(360deg)}}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 0;transition:all .3s}
+.navbar.scrolled{background:rgba(12,22,41,.95);backdrop-filter:blur(12px);box-shadow:var(--sh1);padding:.6rem 0}
+.navbar .container{display:flex;align-items:center;justify-content:space-between}
+.nav-brand img{height:45px;border-radius:50%;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--s200);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--c4)}
+.nav-cta{background:linear-gradient(135deg,var(--b6),var(--c5))!important;color:var(--w)!important;padding:.5rem 1.2rem;border-radius:var(--rs)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.nav-toggle span{width:25px;height:2px;background:var(--w);transition:all .3s}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px}
+#particles{position:absolute;inset:0;z-index:0}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px;margin:0 auto}
+.hero-tag{display:inline-block;background:rgba(6,182,212,.12);color:var(--c4);padding:.4rem 1.2rem;border-radius:50px;font-size:.8rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-title{font-family:var(--fh);font-size:clamp(2rem,5vw,3.5rem);color:var(--w);line-height:1.2;margin-bottom:1rem}
+.hero-rotating{display:block;height:1.3em;overflow:hidden;position:relative}
+.hero-rotating span{display:block;position:absolute;width:100%;color:var(--c4);opacity:0;animation:rotWords 15s ease-in-out infinite}
+.hero-rotating span:nth-child(1){animation-delay:0s}
+.hero-rotating span:nth-child(2){animation-delay:2.5s}
+.hero-rotating span:nth-child(3){animation-delay:5s}
+.hero-rotating span:nth-child(4){animation-delay:7.5s}
+.hero-rotating span:nth-child(5){animation-delay:10s}
+.hero-rotating span:nth-child(6){animation-delay:12.5s}
+@keyframes rotWords{0%,12%{opacity:0;transform:translateY(100%)}15%,28%{opacity:1;transform:translateY(0)}31%,100%{opacity:0;transform:translateY(-100%)}}
+.hero-sub{color:var(--s400);font-size:1.1rem;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-orbital{position:absolute;right:5%;top:50%;transform:translateY(-50%);z-index:1;opacity:.12}
+.hero-orbital img{width:350px;height:350px;border-radius:50%;object-fit:contain;animation:preSpin 20s linear infinite}
+.trust-bar{background:var(--n8);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem 0}
+.trust-bar .container{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+.trust-item{text-align:center}
+.trust-num{font-family:var(--fc);font-size:1.8rem;font-weight:700;color:var(--c4)}
+.trust-label{font-size:.8rem;color:var(--s400);text-transform:uppercase;letter-spacing:1px}
+.video-featured{margin-bottom:2rem;border-radius:var(--rm);overflow:hidden;box-shadow:var(--sh2)}
+.video-wrap{position:relative;border-radius:var(--rm);overflow:hidden;background:var(--n7)}
+.video-wrap video{width:100%;display:block}
+.play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(12,22,41,.5);cursor:pointer;transition:background .3s;z-index:2}
+.play-overlay:hover{background:rgba(12,22,41,.3)}
+.play-overlay i{font-size:2.5rem;color:var(--w);background:rgba(37,99,235,.8);width:65px;height:65px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s}
+.play-overlay:hover i{transform:scale(1.1)}
+.video-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.video-col .video-wrap video{aspect-ratio:16/9;object-fit:cover}
+.cb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.cb-card{position:relative;border-radius:var(--rm);overflow:hidden}
+.cb-badge{position:absolute;top:.75rem;left:.75rem;background:var(--em5);color:var(--w);padding:.2rem .7rem;border-radius:50px;font-size:.7rem;font-weight:700;text-transform:uppercase;z-index:3}
+.cb-card .video-wrap video{aspect-ratio:16/9;object-fit:cover}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:var(--n7);border:1px solid rgba(255,255,255,.06);border-radius:var(--rm);padding:2rem;transition:all .3s}
+.service-card:hover{transform:translateY(-5px);border-color:var(--b5);box-shadow:var(--sh2)}
+.service-icon{width:50px;height:50px;border-radius:var(--rs);background:linear-gradient(135deg,var(--b6),var(--c5));display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.3rem;color:var(--w)}
+.service-card h3{font-family:var(--fh);color:var(--w);margin-bottom:.5rem;font-size:1.15rem}
+.service-card p{color:var(--s400);font-size:.9rem}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.process-step{text-align:center;padding:1.5rem}
+.step-num{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--b6),var(--c5));color:var(--w);font-family:var(--fc);font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.process-step h3{color:var(--w);font-size:1rem;margin-bottom:.5rem}
+.process-step p{color:var(--s400);font-size:.85rem}
+.team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem}
+.team-card{background:var(--n7);border:1px solid rgba(255,255,255,.06);border-radius:var(--rm);padding:1.2rem;text-align:center;transition:all .3s}
+.team-card:hover{transform:translateY(-4px);border-color:var(--b5)}
+.team-card.featured{border-color:var(--c5);background:linear-gradient(135deg,rgba(6,182,212,.08),rgba(37,99,235,.08))}
+.team-img{width:80px;height:80px;border-radius:50%;overflow:hidden;margin:0 auto .75rem;border:2px solid var(--b5)}
+.team-card.featured .team-img{width:95px;height:95px;border-color:var(--c5)}
+.team-img img{width:100%;height:100%;object-fit:cover}
+.team-badge{display:inline-block;background:var(--c5);color:var(--w);font-size:.65rem;padding:.15rem .5rem;border-radius:50px;font-weight:700;margin-bottom:.4rem}
+.team-info h3{color:var(--w);font-size:.9rem;margin-bottom:.2rem}
+.team-info p{color:var(--s400);font-size:.72rem;margin-bottom:.4rem;line-height:1.3}
+.team-email a{display:inline-block;background:rgba(37,99,235,.15);color:var(--b4);padding:.2rem .6rem;border-radius:50px;font-size:.68rem;text-decoration:none;transition:all .3s}
+.team-email a:hover{background:var(--b6);color:var(--w)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.test-card{background:var(--n7);border:1px solid rgba(255,255,255,.06);border-radius:var(--rm);padding:2rem;transition:all .3s}
+.test-card:hover{border-color:var(--b5)}
+.test-stars{color:var(--am4);margin-bottom:.75rem;font-size:.9rem}
+.test-text{color:var(--s200);font-size:.9rem;font-style:italic;margin-bottom:1.5rem;line-height:1.6}
+.test-author{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.test-author img{width:50px;height:50px;border-radius:50%;object-fit:cover;cursor:pointer;border:2px solid var(--b5);transition:border-color .3s}
+.test-author img:hover{border-color:var(--c4)}
+.test-author-info h4{color:var(--w);font-size:.9rem}
+.test-author-info span{color:var(--s400);font-size:.78rem}
+.test-book{margin-bottom:1rem}
+.test-book a{display:inline-block;border-radius:var(--rs);overflow:hidden;border:2px solid rgba(255,255,255,.1);transition:border-color .3s}
+.test-book a:hover{border-color:var(--c4)}
+.test-book img{width:80px;height:110px;object-fit:cover;display:block}
+.test-amazon{display:inline-flex;align-items:center;gap:.4rem;background:var(--am5);color:var(--n9);padding:.4rem .8rem;border-radius:var(--rs);font-size:.78rem;font-weight:700;text-decoration:none;transition:all .3s}
+.test-amazon:hover{background:var(--am4);transform:translateY(-2px)}
+.genres-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.genre-col{background:var(--n7);border:1px solid rgba(255,255,255,.06);border-radius:var(--rm);padding:2rem}
+.genre-col h3{color:var(--w);font-family:var(--fh);font-size:1.3rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.genre-col h3 i{color:var(--c4)}
+.genre-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.genre-tags span{background:rgba(37,99,235,.12);color:var(--b3);padding:.35rem .85rem;border-radius:50px;font-size:.82rem;font-weight:500;border:1px solid rgba(37,99,235,.2);transition:all .3s}
+.genre-tags span:hover{background:var(--b6);color:var(--w);border-color:var(--b6)}
+.about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:3rem;align-items:center}
+.about-img{text-align:center}
+.about-text p{color:var(--s400);margin-bottom:1rem;font-size:.95rem}
+.about-stats{display:flex;gap:2rem;margin-top:2rem}
+.stat-box{text-align:center}
+.counter{font-family:var(--fc);font-size:2.2rem;font-weight:700;color:var(--c4)}
+.stat-plus{font-family:var(--fc);font-size:1.5rem;font-weight:700;color:var(--c4)}
+.stat-box small{display:block;color:var(--s400);font-size:.8rem;margin-top:.2rem}
+.faq-item{background:var(--n7);border:1px solid rgba(255,255,255,.06);border-radius:var(--rs);margin-bottom:.75rem;overflow:hidden;transition:border-color .3s}
+.faq-item.open{border-color:var(--b5)}
+.faq-q{width:100%;background:none;border:none;color:var(--w);padding:1.2rem 1.5rem;font-size:1rem;font-weight:600;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--ff)}
+.faq-q i{color:var(--b4);transition:transform .3s;font-size:.85rem}
+.faq-item.open .faq-q i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a p{padding:0 1.5rem 1.2rem;color:var(--s400);font-size:.9rem;line-height:1.7}
+.faq-a a{color:var(--c4);text-decoration:underline}
+.cta-banner{background:linear-gradient(135deg,var(--n6),var(--b6));padding:4rem 0;text-align:center}
+.cta-banner h2{font-family:var(--fh);color:var(--w);font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:.75rem}
+.cta-banner p{color:rgba(255,255,255,.8);font-size:1.05rem}
+.contact-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem}
+.contact-form{background:var(--n7);border:1px solid rgba(255,255,255,.06);border-radius:var(--rm);padding:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;color:var(--s200);font-size:.85rem;font-weight:600;margin-bottom:.4rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--n8);border:1px solid rgba(255,255,255,.1);border-radius:var(--rs);padding:.75rem 1rem;color:var(--w);font-family:var(--ff);font-size:.9rem;transition:border-color .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--b5)}
+.form-group textarea{resize:vertical}
+.contact-info{display:flex;flex-direction:column;gap:1rem}
+.ci-card{background:var(--n7);border:1px solid rgba(255,255,255,.06);border-radius:var(--rm);padding:1.5rem;text-align:center}
+.ci-card i{font-size:1.5rem;color:var(--c4);margin-bottom:.5rem}
+.ci-card h4{color:var(--w);font-size:.95rem;margin-bottom:.3rem}
+.ci-card p{color:var(--s400);font-size:.85rem}
+.ci-logo{margin-bottom:.5rem}
+.site-footer{background:var(--s900);padding:3rem 0 0;border-top:1px solid rgba(255,255,255,.05)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;padding-bottom:2rem}
+.footer-brand h3{color:var(--w);font-family:var(--fh);margin-bottom:.5rem}
+.footer-brand p{color:var(--s400);font-size:.85rem;margin-bottom:.5rem}
+.footer-links h4{color:var(--w);font-size:.9rem;margin-bottom:.75rem}
+.footer-links a{display:block;color:var(--s400);text-decoration:none;font-size:.85rem;padding:.2rem 0;transition:color .3s}
+.footer-links a:hover{color:var(--c4)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding:1.2rem 0;text-align:center}
+.footer-bottom p{color:var(--s500);font-size:.8rem}
+.back-top{position:fixed;bottom:2rem;right:2rem;width:45px;height:45px;border-radius:50%;background:linear-gradient(135deg,var(--b6),var(--c5));color:var(--w);border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s;z-index:999;box-shadow:var(--sh1)}
+.back-top.show{opacity:1;visibility:visible}
+.back-top:hover{transform:translateY(-3px)}
+.anim-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.anim-up.visible{opacity:1;transform:translateY(0)}
+@media(max-width:1024px){.team-grid{grid-template-columns:repeat(3,1fr)}.services-grid{grid-template-columns:repeat(2,1fr)}.process-steps{grid-template-columns:repeat(2,1fr)}.video-row{grid-template-columns:repeat(2,1fr)}.cb-grid{grid-template-columns:repeat(2,1fr)}.test-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--n8);flex-direction:column;padding:5rem 2rem 2rem;transition:right .3s;box-shadow:var(--sh2)}.nav-links.open{right:0}.nav-toggle{display:flex}.team-grid{grid-template-columns:repeat(2,1fr)}.services-grid,.process-steps,.video-row,.cb-grid{grid-template-columns:1fr}.genres-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.hero-orbital{display:none}.footer-grid{grid-template-columns:1fr}.about-stats{flex-direction:column;gap:1rem}}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader"><img src="Apex logoC (1).jpg" alt="Loading"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <a href="#" class="nav-brand"><img src="Apex logoC (1).jpg" alt="Apex Literary Team"></a>
+    <div class="nav-links">
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="particles"></canvas>
+  <div class="hero-orbital"><img src="Apex logoC (1).jpg" alt=""></div>
+  <div class="hero-content">
+    <span class="hero-tag">29 Publishing Professionals</span>
+    <h1 class="hero-title">We Build Author Brands With<br><span class="hero-rotating"><span>Cinematic Book Trailers</span><span>Strategic Author Marketing</span><span>Publishing &amp; Editing Expertise</span><span>Children's Book Illustration</span><span>Brand Identity &amp; Design</span><span>Reader Engagement Campaigns</span></span></h1>
+    <p class="hero-sub">Apex Literary Team is a full-service collective of editors, marketers, designers, and video producers helping authors reach their full potential.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Get Your Free Proposal <i class="fas fa-arrow-right"></i></a>
+      <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">Authors Served</div></div>
+    <div class="trust-item"><div class="trust-num">1200+</div><div class="trust-label">Projects Completed</div></div>
+    <div class="trust-item"><div class="trust-num">29</div><div class="trust-label">Team Members</div></div>
+    <div class="trust-item"><div class="trust-num">98%</div><div class="trust-label">Client Satisfaction</div></div>
+    <div class="trust-item"><div class="trust-num">15</div><div class="trust-label">Genres Covered</div></div>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="section">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">Our Work</span>
+      <h2 class="section-title">Video Showcase</h2>
+      <p class="section-sub">Cinematic book trailers and promotional videos crafted by our in-house production team.</p>
+    </div>
+    <div class="video-featured anim-up">
+      <div class="video-wrap">
+        <video src="main portfolio.mp4" preload="metadata"></video>
+        <div class="play-overlay"><i class="fas fa-play"></i></div>
+      </div>
+    </div>
+    <div class="video-row anim-up">
+      <div class="video-col"><div class="video-wrap"><video src="Website reference Video1.mp4" preload="metadata"></video><div class="play-overlay"><i class="fas fa-play"></i></div></div></div>
+      <div class="video-col"><div class="video-wrap"><video src="Website reference Video2.mp4" preload="metadata"></video><div class="play-overlay"><i class="fas fa-play"></i></div></div></div>
+      <div class="video-col"><div class="video-wrap"><video src="Website Reference Video3.mp4" preload="metadata"></video><div class="play-overlay"><i class="fas fa-play"></i></div></div></div>
+      <div class="video-col"><div class="video-wrap"><video src="Website reference video4.mp4" preload="metadata"></video><div class="play-overlay"><i class="fas fa-play"></i></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHILDREN'S BOOK SAMPLES -->
+<section id="cbsamples" class="section section-alt">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">Illustration &amp; Animation</span>
+      <h2 class="section-title">Children's Book Video Samples</h2>
+      <p class="section-sub">Animated previews showcasing our children's book illustration and video production capabilities.</p>
+    </div>
+    <div class="cb-grid anim-up">
+      <div class="cb-card"><span class="cb-badge">Sample</span><div class="video-wrap"><video src="cock.mp4" preload="metadata"></video><div class="play-overlay"><i class="fas fa-play"></i></div></div></div>
+      <div class="cb-card"><span class="cb-badge">Sample</span><div class="video-wrap"><video src="lama.mp4" preload="metadata"></video><div class="play-overlay"><i class="fas fa-play"></i></div></div></div>
+      <div class="cb-card"><span class="cb-badge">Sample</span><div class="video-wrap"><video src="dreamsnow.mp4" preload="metadata"></video><div class="play-overlay"><i class="fas fa-play"></i></div></div></div>
+      <div class="cb-card"><span class="cb-badge">Sample</span><div class="video-wrap"><video src="realanimal.mp4" preload="metadata"></video><div class="play-overlay"><i class="fas fa-play"></i></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">What We Do</span>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-sub">Comprehensive solutions for every stage of your publishing journey.</p>
+    </div>
+    <div class="services-grid anim-up">
+      <div class="service-card"><div class="service-icon"><i class="fas fa-film"></i></div><h3>Cinematic Book Trailers</h3><p>Hollywood-quality video trailers that capture the essence of your story and captivate potential readers across every platform.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-bullhorn"></i></div><h3>Strategic Marketing</h3><p>Data-driven campaigns across social media, email, and paid advertising designed to build your readership and boost sales.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-pen-fancy"></i></div><h3>Editing &amp; Publishing</h3><p>Professional developmental, line, and copy editing plus full publishing support to get your manuscript market-ready.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-palette"></i></div><h3>Brand Identity &amp; Design</h3><p>Cover design, author logos, media kits, and complete visual branding that makes you stand out in a crowded market.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="fab fa-amazon"></i></div><h3>Amazon Optimization</h3><p>Keyword research, listing optimization, category placement, and A+ Content to maximize your visibility on Amazon.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-child"></i></div><h3>Children's Book Illustration</h3><p>Custom illustration and animation for children's books, from character design to full-page spreads and animated previews.</p></div>
+    </div>
+  </div>
+</section><!-- PROCESS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">How It Works</span>
+      <h2 class="section-title">Our Process</h2>
+    </div>
+    <div class="process-steps anim-up">
+      <div class="process-step"><div class="step-num">1</div><h3>Discovery Call</h3><p>Email us your project details. We will review your goals, genre, and timeline to understand your vision.</p></div>
+      <div class="process-step"><div class="step-num">2</div><h3>Custom Proposal</h3><p>Within 24 hours you receive a tailored plan with clear deliverables, timeline, and transparent pricing.</p></div>
+      <div class="process-step"><div class="step-num">3</div><h3>Production</h3><p>Our specialists execute your project with regular email updates and revision checkpoints along the way.</p></div>
+      <div class="process-step"><div class="step-num">4</div><h3>Launch &amp; Grow</h3><p>We deliver final assets and continue supporting your campaign to maximize impact and reader engagement.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="section">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">The Collective</span>
+      <h2 class="section-title">Meet Our Team</h2>
+      <p class="section-sub">29 dedicated publishing professionals working together to elevate your author brand.</p>
+    </div>
+    <div class="team-grid anim-up">
+      <div class="team-card featured"><div class="team-img"><img src="Claire Paul.jpg" alt="Claire Paul"></div><span class="team-badge">Founder</span><div class="team-info"><h3>Claire Paul</h3><p>Founder &amp; Book Editor</p></div><div class="team-email"><a href="mailto:clairepaul@apexliteraryteam.com">clairepaul@apexliteraryteam.com</a></div></div>
+      <div class="team-card featured"><div class="team-img"><img src="headshot1.png" alt="Rebecca Sterling"></div><span class="team-badge">Co-Founder</span><div class="team-info"><h3>Rebecca Sterling</h3><p>Co-Founder &amp; Creative Director</p></div><div class="team-email"><a href="mailto:rebecca@apexliteraryteam.com">rebecca@apexliteraryteam.com</a></div></div>
+      <div class="team-card featured"><div class="team-img"><img src="edward.png" alt="Michael Edward"></div><div class="team-info"><h3>Michael Edward</h3><p>Book Marketer | Children's Book Specialist &amp; Illustrator | Video Editor</p></div><div class="team-email"><a href="mailto:michael@apexliteraryteam.com">michael@apexliteraryteam.com</a></div></div>
+      <div class="team-card featured"><div class="team-img"><img src="thomas.png" alt="Thomas Wormald"></div><div class="team-info"><h3>Thomas Wormald</h3><p>Book Editor &amp; Publisher</p></div><div class="team-email"><a href="mailto:thomaswormald@apexliteraryteam.com">thomaswormald@apexliteraryteam.com</a></div></div>
+      <div class="team-card featured"><div class="team-img"><img src="Evelyn Brooks.jpg" alt="Evelyn Brooks"></div><div class="team-info"><h3>Evelyn Brooks</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Fheadshot cut out.webp" alt="Jullian Fairmont"></div><div class="team-info"><h3>Jullian Fairmont</h3><p>Book Marketing Strategist</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Joel Benson.jpg" alt="Joel Benson"></div><div class="team-info"><h3>Joel Benson</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="angeles.jpg" alt="Angeles McClaine"></div><div class="team-info"><h3>Angeles McClaine</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:angeles@apexliteraryteam.com">angeles@apexliteraryteam.com</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="female headshot C.png" alt="Natalie Brooks"></div><div class="team-info"><h3>Natalie Brooks</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Mary Martin.jpg" alt="Mary Martin"></div><div class="team-info"><h3>Mary Martin</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Dominique Gareth.jpg" alt="Dominique Gareth"></div><div class="team-info"><h3>Dominique Gareth</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="kenny.jpeg" alt="Bolarinwa Winner"></div><div class="team-info"><h3>Bolarinwa Winner</h3><p>Book Marketer</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="matt.jpeg" alt="Matthew"></div><div class="team-info"><h3>Matthew</h3><p>Book Marketer</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Michael.jpeg" alt="Michael Winner"></div><div class="team-info"><h3>Michael Winner</h3><p>Book Marketer</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Rachel Morgan.jpg" alt="Rachel Morgan"></div><div class="team-info"><h3>Rachel Morgan</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Sarah Lawson.jpg" alt="Sarah Lawson"></div><div class="team-info"><h3>Sarah Lawson</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Susan Olivia.png" alt="Susan Olivia"></div><div class="team-info"><h3>Susan Olivia</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Naomi Ellis.png" alt="Naomi Ellis"></div><div class="team-info"><h3>Naomi Ellis</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Roberta.jpg" alt="Roberta Lumpkin"></div><div class="team-info"><h3>Roberta Lumpkin</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Jessica Laane.jpg" alt="Jessica Lane"></div><div class="team-info"><h3>Jessica Lane</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="micheal22.jpg" alt="Richard Martin"></div><div class="team-info"><h3>Richard Martin</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Victoriahenderson.jpeg" alt="Victoria Henderson"></div><div class="team-info"><h3>Victoria Henderson</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="jonathan.jpeg" alt="Jonathan Desjardin"></div><div class="team-info"><h3>Jonathan Desjardin</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:jonathan@apexliteraryteam.com">jonathan@apexliteraryteam.com</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Ruthmccants.jpeg" alt="Ruth McCants"></div><div class="team-info"><h3>Ruth McCants</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:mccants@apexliteraryteam.com">mccants@apexliteraryteam.com</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="jennetjefferson.jpeg" alt="Janet Jefferson"></div><div class="team-info"><h3>Janet Jefferson</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:janet@apexliteraryteam.com">janet@apexliteraryteam.com</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Dorman.jpg" alt="Julie Dorman"></div><div class="team-info"><h3>Julie Dorman</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="erica.png" alt="Erica Mullikin"></div><div class="team-info"><h3>Erica Mullikin</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:erica@apexliteraryteam.com">erica@apexliteraryteam.com</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="mary.jpg" alt="Mary Benfield"></div><div class="team-info"><h3>Mary Benfield</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:marybenfield@apexliteraryteam.com">marybenfield@apexliteraryteam.com</a></div></div>
+      <div class="team-card"><div class="team-img"><img src="Gloria Herman.jpeg" alt="Gloria Herman"></div><div class="team-info"><h3>Gloria Herman</h3><p>Team Member</p></div><div class="team-email"><a href="mailto:apexliteraryteam@gmail.com">Contact</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section section-alt">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">Client Love</span>
+      <h2 class="section-title">What Authors Say</h2>
+    </div>
+    <div class="test-grid anim-up">
+      <div class="test-card">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="test-text">"Apex Literary Team transformed my author platform completely. The book trailer they produced was cinematic and drove a massive spike in pre-orders. Their marketing strategy was data-driven and incredibly effective."</p>
+        <div class="test-author">
+          <a href="https://www.amazon.com/stores/Emily-Winfield-Martin/author/B003V4BFTC" target="_blank"><img src="Emily Martin PPC.webp" alt="Emily Winfield Martin"></a>
+          <div class="test-author-info"><h4>Emily Winfield Martin</h4><span>Bestselling Author &amp; Illustrator</span></div>
+        </div>
+        <div class="test-book"><a href="https://www.amazon.com/stores/Emily-Winfield-Martin/author/B003V4BFTC" target="_blank"><img src="Emily Martin BookC.jpg" alt="Book"></a></div>
+        <a href="https://www.amazon.com/stores/Emily-Winfield-Martin/author/B003V4BFTC" target="_blank" class="test-amazon"><i class="fab fa-amazon"></i> View on Amazon</a>
+      </div>
+      <div class="test-card">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="test-text">"Working with Apex was a game-changer for my children's book series. Their illustration team brought my characters to life, and the marketing campaign they built tripled my monthly sales within 8 weeks."</p>
+        <div class="test-author">
+          <a href="https://www.amazon.com/stores/Diane-Alber/author/B07D4F5ND9" target="_blank"><img src="Daine Alber PPC.jpg" alt="Diane Alber"></a>
+          <div class="test-author-info"><h4>Diane Alber</h4><span>Children's Book Author</span></div>
+        </div>
+        <div class="test-book"><a href="https://www.amazon.com/stores/Diane-Alber/author/B07D4F5ND9" target="_blank"><img src="Daine Alber BookC.webp" alt="Book"></a></div>
+        <a href="https://www.amazon.com/stores/Diane-Alber/author/B07D4F5ND9" target="_blank" class="test-amazon"><i class="fab fa-amazon"></i> View on Amazon</a>
+      </div>
+      <div class="test-card">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="test-text">"The editing and publishing support from Apex was outstanding. They polished my manuscript to perfection and their Amazon optimization strategy put my book in front of thousands of new readers I never could have reached alone."</p>
+        <div class="test-author">
+          <a href="https://www.amazon.com/stores/Rachael-C.-Duncan/author/B017OM3KRY" target="_blank"><img src="Rachael Duncan PPB.jpg" alt="Rachael C. Duncan"></a>
+          <div class="test-author-info"><h4>Rachael C. Duncan</h4><span>Indie Author &amp; Entrepreneur</span></div>
+        </div>
+        <div class="test-book"><a href="https://www.amazon.com/stores/Rachael-C.-Duncan/author/B017OM3KRY" target="_blank"><img src="Rachael Duncan BookP.webp" alt="Book"></a></div>
+        <a href="https://www.amazon.com/stores/Rachael-C.-Duncan/author/B017OM3KRY" target="_blank" class="test-amazon"><i class="fab fa-amazon"></i> View on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GENRES -->
+<section id="genres" class="section">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">What We Cover</span>
+      <h2 class="section-title">Genres We Specialize In</h2>
+      <p class="section-sub">From page-turning thrillers to heartfelt children's books, our team has deep expertise across every major genre.</p>
+    </div>
+    <div class="genres-grid anim-up">
+      <div class="genre-col">
+        <h3><i class="fas fa-book-open"></i> Fiction</h3>
+        <div class="genre-tags"><span>Romance</span><span>Thriller &amp; Suspense</span><span>Science Fiction</span><span>Fantasy</span><span>Mystery</span><span>Historical Fiction</span><span>Horror</span><span>Literary Fiction</span><span>Young Adult</span><span>Children's Books</span></div>
+      </div>
+      <div class="genre-col">
+        <h3><i class="fas fa-graduation-cap"></i> Non-Fiction</h3>
+        <div class="genre-tags"><span>Self-Help</span><span>Business &amp; Finance</span><span>Memoir &amp; Biography</span><span>Health &amp; Wellness</span><span>Spirituality</span><span>Education</span><span>Cookbooks</span><span>Travel</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section section-alt">
+  <div class="container">
+    <div class="about-grid anim-up">
+      <div class="about-img"><img src="Apex logoC (1).jpg" alt="Apex Literary Team" style="border-radius:50%;max-width:340px;width:100%;box-shadow:var(--sh3)"></div>
+      <div class="about-text">
+        <span class="section-tag">Who We Are</span>
+        <h2 class="section-title" style="text-align:left">A Full-Service Literary Powerhouse</h2>
+        <p>Apex Literary Team is a collective of 29 publishing professionals, marketers, editors, illustrators, and video producers united by a single mission: helping authors succeed. We handle every stage of your book's journey, from manuscript polish to cinematic trailers to Amazon optimization.</p>
+        <p>Every project is managed through clear, documented email communication so you always have a written record. No hidden fees, no surprise charges. Just honest, expert guidance tailored to your goals.</p>
+        <div class="about-stats">
+          <div class="stat-box"><span class="counter" data-target="500">0</span><span class="stat-plus">+</span><small>Authors Served</small></div>
+          <div class="stat-box"><span class="counter" data-target="1200">0</span><span class="stat-plus">+</span><small>Projects Completed</small></div>
+          <div class="stat-box"><span class="counter" data-target="29">0</span><small>Team Members</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">Common Questions</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list anim-up" style="max-width:800px;margin:0 auto">
+      <div class="faq-item"><button class="faq-q">How do I get started with Apex Literary Team?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Simply fill out the contact form at the bottom of this page or email us at <a href="mailto:apexliteraryteam@gmail.com">apexliteraryteam@gmail.com</a>. Tell us about your book, your goals, and your timeline. A team member will respond within 24 hours with a personalized plan.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What services do you offer?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>We offer cinematic book trailers, strategic marketing campaigns, professional editing and publishing support, brand identity and cover design, Amazon listing optimization, and children's book illustration. Every service is tailored to your specific genre and audience.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How is communication handled during a project?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>All client communication is handled via email. This ensures every discussion, revision request, and approval is fully documented and easy to reference. You will always know exactly where your project stands.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What are typical project timelines?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Timelines vary by scope. A book trailer typically takes 2 to 4 weeks. Full marketing campaigns run 4 to 12 weeks. Editing and publishing projects depend on manuscript length. We will provide a clear timeline in your initial proposal.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do you work with self-published authors?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Absolutely. The majority of our clients are independent and self-published authors. Whether you are launching your first book or your tenth, our team has the tools and experience to amplify your reach.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How much do your services cost?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Every project is unique, so we provide custom quotes based on your specific needs. Email us at <a href="mailto:apexliteraryteam@gmail.com">apexliteraryteam@gmail.com</a> with details about your project and we will send you a transparent, no-obligation proposal.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner anim-up">
+  <div class="container" style="text-align:center">
+    <img src="Apex logoC (1).jpg" alt="Apex Literary Team" style="width:90px;height:90px;border-radius:50%;object-fit:contain;margin-bottom:1.5rem;box-shadow:0 0 30px rgba(37,99,235,.5)">
+    <h2>Ready to Elevate Your Author Brand?</h2>
+    <p>Join 500+ authors who trust Apex Literary Team to bring their books to the world.</p>
+    <a href="#contact" class="btn btn-primary" style="margin-top:1.5rem">Get Your Free Proposal</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section section-alt">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">Let's Talk</span>
+      <h2 class="section-title">Start Your Project Today</h2>
+      <p class="section-sub">Fill out the form below and a team member will get back to you within 24 hours.</p>
+    </div>
+    <div class="contact-grid anim-up">
+      <form action="https://formspree.io/f/xrpgkwga" method="POST" class="contact-form">
+        <input type="hidden" name="_subject" value="New Proposal - Apex Literary Team">
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" required placeholder="Jane Doe"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" name="email" required placeholder="jane@example.com"></div>
+        </div>
+        <div class="form-group"><label>Genre / Book Type</label>
+          <select name="genre" required><option value="">Select a genre...</option><option>Romance</option><option>Thriller &amp; Suspense</option><option>Science Fiction</option><option>Fantasy</option><option>Mystery</option><option>Historical Fiction</option><option>Horror</option><option>Literary Fiction</option><option>Young Adult</option><option>Children's Books</option><option>Self-Help</option><option>Business &amp; Finance</option><option>Memoir &amp; Biography</option><option>Health &amp; Wellness</option><option>Spirituality</option><option>Education</option><option>Cookbooks</option><option>Travel</option><option>Other</option></select>
+        </div>
+        <div class="form-group"><label>Services Interested In</label>
+          <select name="service"><option value="">Select a service...</option><option>Cinematic Book Trailer</option><option>Strategic Marketing Campaign</option><option>Editing &amp; Publishing</option><option>Brand Identity &amp; Design</option><option>Amazon Optimization</option><option>Children's Book Illustration</option><option>Full-Service Package</option></select>
+        </div>
+        <div class="form-group"><label>Tell Us About Your Project</label><textarea name="message" rows="5" required placeholder="Describe your book, your goals, and your ideal timeline..."></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Send Proposal Request <i class="fas fa-paper-plane"></i></button>
+      </form>
+      <div class="contact-info">
+        <div class="ci-card"><div class="ci-logo"><img src="Apex logoC (1).jpg" alt="Apex" style="width:60px;height:60px;border-radius:50%;object-fit:contain"></div><h4>Apex Literary Team</h4><p>Your full-service partner for book marketing, publishing, and author branding.</p></div>
+        <div class="ci-card"><i class="fas fa-envelope"></i><h4>Email Us</h4><a href="mailto:apexliteraryteam@gmail.com" class="btn btn-outline" style="font-size:.85rem;padding:.5rem 1rem">apexliteraryteam@gmail.com</a></div>
+        <div class="ci-card"><i class="fas fa-clock"></i><h4>Response Time</h4><p>Within 24 hours on business days</p></div>
+        <div class="ci-card"><i class="fas fa-users"></i><h4>Team Size</h4><p>29 dedicated publishing professionals</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Apex logoC (1).jpg" alt="Apex Literary Team" style="width:60px;height:60px;border-radius:50%;object-fit:contain;margin-bottom:1rem">
+        <h3>Apex Literary Team</h3>
+        <p>A 29-member collective of editors, marketers, designers, and video producers helping authors reach their full potential.</p>
+        <a href="mailto:apexliteraryteam@gmail.com" style="color:var(--c4);font-size:.9rem">apexliteraryteam@gmail.com</a>
+      </div>
+      <div class="footer-links"><h4>Quick Links</h4><a href="#portfolio">Portfolio</a><a href="#services">Services</a><a href="#team">Our Team</a><a href="#testimonials">Testimonials</a><a href="#about">About</a><a href="#faq">FAQ</a></div>
+      <div class="footer-links"><h4>Services</h4><a href="#services">Book Trailers</a><a href="#services">Author Marketing</a><a href="#services">Editing &amp; Publishing</a><a href="#services">Brand Design</a><a href="#services">Amazon Optimization</a><a href="#services">Illustration</a></div>
+      <div class="footer-links"><h4>Connect</h4><a href="#contact">Get a Quote</a><a href="mailto:apexliteraryteam@gmail.com">Email Us</a><a href="#faq">FAQ</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 Apex Literary Team. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<button id="backTop" class="back-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+(function(){
+  window.addEventListener('load',function(){var p=document.getElementById('preloader');if(p)p.classList.add('loaded')});
+  setTimeout(function(){var p=document.getElementById('preloader');if(p)p.classList.add('loaded')},6000);
+  var nav=document.querySelector('.navbar');
+  window.addEventListener('scroll',function(){if(nav)nav.classList.toggle('scrolled',window.scrollY>60);var bt=document.getElementById('backTop');if(bt)bt.classList.toggle('show',window.scrollY>500)});
+  var toggle=document.querySelector('.nav-toggle'),links=document.querySelector('.nav-links');
+  if(toggle&&links){toggle.addEventListener('click',function(){links.classList.toggle('open');toggle.classList.toggle('active')});links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open');toggle.classList.remove('active')})})}
+  var bt=document.getElementById('backTop');
+  if(bt)bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.anim-up').forEach(function(el){obs.observe(el)});
+  var cObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var el=e.target,target=parseInt(el.getAttribute('data-target')),dur=2000,startTime=null;function step(ts){if(!startTime)startTime=ts;var prog=Math.min((ts-startTime)/dur,1);el.textContent=Math.floor(prog*target);if(prog<1)requestAnimationFrame(step);else el.textContent=target}requestAnimationFrame(step);cObs.unobserve(el)}})},{threshold:0.5});
+  document.querySelectorAll('.counter').forEach(function(c){cObs.observe(c)});
+  document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=this.parentElement,isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(fi){fi.classList.remove('open')});if(!isOpen)item.classList.add('open')})});
+  var canvas=document.getElementById('particles');
+  if(canvas){var ctx=canvas.getContext('2d'),W,H,particles=[];function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight}resize();window.addEventListener('resize',resize);for(var i=0;i<60;i++)particles.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.5,dx:(Math.random()-.5)*.4,dy:(Math.random()-.5)*.4,o:Math.random()*.5+.2});function draw(){ctx.clearRect(0,0,W,H);particles.forEach(function(p){p.x+=p.dx;p.y+=p.dy;if(p.x<0||p.x>W)p.dx*=-1;if(p.y<0||p.y>H)p.dy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(96,165,250,'+p.o+')';ctx.fill()});requestAnimationFrame(draw)}draw()}
+  var allVideos=document.querySelectorAll('.video-wrap video'),overlays=document.querySelectorAll('.play-overlay');
+  overlays.forEach(function(ov){ov.addEventListener('click',function(){var vid=this.parentElement.querySelector('video');if(!vid)return;allVideos.forEach(function(v){if(v!==vid){v.pause();var po=v.parentElement.querySelector('.play-overlay');if(po)po.style.display='flex'}});vid.play().catch(function(){});this.style.display='none'})});
+  allVideos.forEach(function(v){v.addEventListener('pause',function(){var po=this.parentElement.querySelector('.play-overlay');if(po)po.style.display='flex'});v.addEventListener('ended',function(){var po=this.parentElement.querySelector('.play-overlay');if(po)po.style.display='flex'})});
+  var vObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting){var v=e.target.querySelector('video');if(v&&!v.paused){v.pause();var po=e.target.querySelector('.play-overlay');if(po)po.style.display='flex'}}})},{threshold:0.25});
+  document.querySelectorAll('.video-wrap').forEach(function(w){vObs.observe(w)});
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+})();
+</script>
+</body>
+</html>
